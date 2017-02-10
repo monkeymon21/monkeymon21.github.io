@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Jquerey first homepage </title>
+<meta name = “viewport” content  = “width-device-width,initial-scale=”1”/>
+<link href = “styles/custom.css” rel = “stylesheet” tyoe = ”text/css”>
+<link rel =”stylesheet” href=”Jquery-mobile.ext
+ernal-png-1.4.5.css>
+<link rel="stylesheet" href="themes/ProjectTheme.min.css" />
+<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+
+<script src =”jquery.mobile-1.4.5.js”</script>
+<script src=”jquery.mobile-1.4.5.min.js”</script>
+</head>
+<body>
+<div id =”page” data-role= ”page” data-add-back-btn= “true”>
+	<div data-role= “header”>
+		<div class =”logo”<img src = “Images/images1.jpg”> width = ”210” height = “45” alt = “ “
+				/></div>
+	</div>
+<div data-role="panel" id="MyExpo">
+	<h2>Extra Information</h2>
+	<p> Hello and welcome to my informative information page here i will describe all of the extra content soon coming to this application</p>
+</div>
+
+<div data-role= “header”>
+	<h1> welcome to my homepage </h1>
+	<a href="#MyExpo" class="ui-btn ui-btn-inline">Open Panel</a>
+</div>
+<div data-role= “content”>
+	<ui data-role= “listview”>
+		<li><a href= “# pageone”> page one</a></li>
+		<li><a href= “#pagetwo”> page two</a></li>
+		<li><a href= “#pagethree”> page three</a></li>
+		<li><a href="#pagefour"> page four</a></li>
+		<li><a href="Form"> page five</a></li>
+		<li><a href="Form"> Favorite Songs</a></li>
+		<li><a href="#grid">Grid</a></li>
+	</ui>
+</div>
+< div data-role = “footer”>
+	<h4> MyHomePage&copy; 2017</h4>
+</div>
+<div id= “pageone” data-role= “page” data-add-back-btn= “true>
+	<h1> section one</h1>
+</div>
+<div data-role= “content”>
+	<h2>header</h2>
+	<p> welcome to sector one</p>
+</div>
+
+</div>
+<div id= “pagetwo” data-role= “page” data-add-back-btn= “true>
+	<h1> section two</h1>
+</div>
+<div data-role= “content”>
+	<h2>header</h2>
+	<p> welcome to sector two</p>
+</div>
+
+
+</div>
+<div id= “pagethree” data-role= “page” data-add-back-btn= “true>
+	<h1> section three</h1>
+</div>
+<div data-role= “content”>
+	<h2>header</h2>
+	<p> welcome to sector three</p>
+</div>
+<div id= “pagefour” data-role= “page” data-add-back-btn= “true>
+	<h1> Welcome to first new page</h1>
+</div>
+<div data-role= “content”>
+	<ul data-role="listview" data-theme="c" data-filter="true">
+		<li><a href ="doom.html">
+			<img src="doom.small.png" class="ui-li-icon">
+			Pitch 1
+		</a>
+	</li>
+</ul>
+<div data-role= "footer">
+	<h4>Footer</h4>
+
+
+</div>
+
+<div id= “Form” data-role= “page” data-add-back-btn= “true>
+	<h1> Form</h1>
+</div>
+<div data-role= “content”>
+	<form action="form.php" method="post">
+
+<label for="fname">First name:</label>
+<label for="lname">Last name:</label>
+<label for="nname">Nick name:</label>
+<label for ="textinput">Text Input:</label>
+<label for="search">Search:</label>
+
+<input type="text" name="fname" id="fname">
+<input type="text" name="lname" id="lname">
+<input type="text" name="nname" id="nname">
+<input type="text" name="textinput" placeholder="Text Input" value"">
+<input type="search" name="search" id="Search" value="">
+
+</form>
+
+<div id= “Form” data-role= “page” data-add-back-btn= “true>
+	<h1> Favorite Songs</h1>
+</div>
+<div data-role= “content”>
+	This will test my Favoirte songs in this app.
+	1. Grenade Jumper
+	2.Gatman and Robin
+	3.Relapse
+
+</p>
+
+<textarea class="localstorage" placeholder="Input your favorite song here and it will be added to the list.." autofocus></textarea>
+
+<button class="clear">Clear localStorage</button>
+
+<button class="empty">Empty localStorage</button>
+
+</div>
+
+<div data-role="page" id="grid" data-theme="a" data-add-back-btn="true">
+<div data-role="header" data-theme="a" data-add-back-btn="true">
+<h1>Grid</h1>
+</div>
+<div data-role="content">
+<div class="ui-grid-c">
+<div class="ui-block-a"><div class="ui-bar ui-bar-a" style="height:60px">Block A</div></div>
+<div class="ui-block-b"><div class="ui-bar ui-bar-a" style="height:60px">Block B</div></div>
+<div class ="ui-block-c"><div class="ui-bar ui-bar-a" style="height:60px">Block C</div></div>
+</div><!-- /grid-a -->
+
+</div>
+</body>
+<script>
+
+(function() {
+
+var home = document.querySelector('.localstorage');
+
+function supportsLocalStorage() {
+
+return typeof(Storage)!== 'undefined';
+
+}
+
+if (!supportsLocalStorage()) {
+
+home.value = 'Your browser does not support localStorage.';
+
+} else {
+
+try {
+
+setInterval(function() {
+
+localStorage.setItem('autosave', home.value);
+
+}, 1000);
+
+} catch (e) {
+
+if (e == QUOTA_EXCEEDED_ERR) {
+
+alert('Quota exceeded!');
+
+}
+
+}
+
+if (localStorage.getItem('autosave')) {
+
+home.value = localStorage.getItem('autosave');
+
+}
+
+document.querySelector('.clear').onclick = function() {
+
+home.value = '';
+
+localStorage.removeItem('autosave');
+
+};
+
+document.querySelector('.empty').onclick = function() {
+
+home.value = '';
+
+localStorage.clear();
+
+};
+
+}
+
+})();
+
+</script>
